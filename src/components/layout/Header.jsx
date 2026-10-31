@@ -25,9 +25,9 @@ const Header = () => {
             className="h-12 w-12 rounded-full"
           />
 
-          <h1 className="text-2xl font-bold text-blue-700">
+          <span className="text-xl font-bold text-blue-700">
             Motor-Bike
-          </h1>
+          </span>
         </a>
 
         {/* Desktop Navbar */}

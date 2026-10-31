@@ -8,24 +8,24 @@ const Services = () => {
   const services = [
     {
       image: service1,
-      date: "A SEPTEMBER 13, 2019",
+      date: "A SEPTEMBER 13, 2012",
       title: "MX SUNSET",
       description:
-        "Lorem ipsum dolor sit amet, sea no tantas consul disputationi, ei his tota legere.",
+        "Enjoy a smoother and more comfortable ride with improved seating, suspension, and riding ergonomics.",
     },
     {
-      image: service1 ,
-      date: "A SEPTEMBER 14, 2019",
+      image: service2 ,
+      date: "A FEABRUARY 14, 2019",
       title: "4-HOUR TOUR",
       description:
-        "Lorem ipsum dolor sit amet, sea no tantas consul disputationi, ei his tota legere.",
+        "Enhance your motorcycle's performance with quality upgrades designed for better speed, power, and control.",
     },
     {
-      image: service1,
-      date: "A SEPTEMBER 16, 2019",
+      image: service3,
+      date: "A MAY 16, 2012",
       title: "DIRT BIKE EXPERIENCE",
       description:
-        "Lorem ipsum dolor sit amet, sea no tantas consul disputationi, ei his tota legere.",
+        "Ride with confidence through improved braking, handling, and reliable safety features.",
     },
   ];
 
@@ -33,7 +33,7 @@ const Services = () => {
     <section id="services" className="py-16">
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
 
-        <h2 className="mb-10 text-center text-3xl font-bold text-red-800 md:text-4xl">
+        <h2 className="text-center text-3xl font-bold text-red-800 md:text-4xl">
           IMPROVE GENERAL RIDEABILITY
         </h2>
 
@@ -48,7 +48,6 @@ const Services = () => {
             />
           ))}
         </div>
-
       </div>
     </section>
   );

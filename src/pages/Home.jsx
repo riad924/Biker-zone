@@ -5,7 +5,6 @@ import Team from "../components/sections/Team";
 import WhyChooseUs from "../components/sections/WhyChooseUs";
 import Gallery from "../components/sections/Gallery";
 
-
 const Home = () => {
   return (
     <main>
