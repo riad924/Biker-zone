@@ -6,7 +6,7 @@ const About = () => {
 
         {/* Content */}
         <div className="w-full lg:w-1/2 text-left">
-
+  
           <p className="tracking-wide text-red-700">
             Ipsum Porta
           </p>
