@@ -7,9 +7,14 @@ import AppRoutes from "./routes/AppRoutes";
 const App = () => {
   const location = useLocation();
 
-  const isAuthPage =
-    location.pathname === "/login" ||
-    location.pathname === "/register";
+  const authPages = [
+    "/login",
+    "/register",
+    "/forgot-password"
+    ,
+  ];
+
+  const isAuthPage = authPages.includes(location.pathname);
 
   return (
     <>
