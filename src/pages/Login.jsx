@@ -3,9 +3,15 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 
+import { useAuth } from "../context/AuthContext";
+
 const Login = () => {
   const navigate = useNavigate();
 
+  // Auth Context
+  const { login } = useAuth();
+
+  // Form State
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -40,7 +46,9 @@ const Login = () => {
 
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    ) {
       newErrors.email = "Enter a valid email address";
     }
 
@@ -65,40 +73,24 @@ const Login = () => {
       setLoading(true);
       setServerError("");
 
-      // Replace this with your real API endpoint
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            email: formData.email,
-            password: formData.password,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed");
-      }
+      // Login through AuthContext
+      await login({
+        email: formData.email,
+        password: formData.password,
+      });
 
       // Navigate after successful login
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
 
     } catch (error) {
-      setServerError(error.message || "Something went wrong");
+      setServerError(error.message || "Login failed");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-10">
+    <section className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-10">
 
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
 
@@ -128,7 +120,10 @@ const Login = () => {
 
           {/* Email */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="mb-2 block text-sm font-medium text-gray-700"
+            >
               Email Address
             </label>
 
@@ -136,6 +131,7 @@ const Login = () => {
               <Mail className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
 
               <input
+                id="email"
                 type="email"
                 name="email"
                 value={formData.email}
@@ -155,7 +151,10 @@ const Login = () => {
 
           {/* Password */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="mb-2 block text-sm font-medium text-gray-700"
+            >
               Password
             </label>
 
@@ -163,6 +162,7 @@ const Login = () => {
               <Lock className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
 
               <input
+                id="password"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
@@ -174,7 +174,7 @@ const Login = () => {
 
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowPassword((prev) => !prev)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >

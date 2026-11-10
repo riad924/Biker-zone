@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
+import { registerUser } from "../services/authService";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -46,7 +47,9 @@ const Register = () => {
 
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    ) {
       newErrors.email = "Enter a valid email address";
     }
 
@@ -77,32 +80,22 @@ const Register = () => {
       setLoading(true);
       setServerError("");
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/auth/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            password: formData.password,
-          }),
-        }
-      );
+      const result = await registerUser({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
 
-      const data = await response.json();
+      console.log("Registration successful:", result);
 
-      if (!response.ok) {
-        throw new Error(data.message || "Registration failed");
-      }
+      alert("Registration successful!");
 
       navigate("/login");
 
     } catch (error) {
-      setServerError(error.message || "Something went wrong");
+      setServerError(
+        error.message || "Something went wrong"
+      );
     } finally {
       setLoading(false);
     }
@@ -110,7 +103,6 @@ const Register = () => {
 
   return (
     <section className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-10">
-
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
 
         {/* Heading */}
@@ -124,7 +116,7 @@ const Register = () => {
           </p>
         </div>
 
-        {/* Server Error */}
+        {/* Error Message */}
         {serverError && (
           <p
             role="alert"
@@ -248,7 +240,9 @@ const Register = () => {
 
               <button
                 type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                onClick={() =>
+                  setShowConfirmPassword(!showConfirmPassword)
+                }
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
                 aria-label={showConfirmPassword ? "Hide password" : "Show password"}
               >
