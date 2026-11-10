@@ -7,7 +7,7 @@ const About = () => {
       aria-labelledby="about-heading"
       className="py-16 md:py-24"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 md:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+      <div className="container grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
 
         {/* About Content */}
         <div className="space-y-6">

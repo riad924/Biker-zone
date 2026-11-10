@@ -25,7 +25,7 @@ const Gallery = () => {
 
   return (
     <section id="gallery" className="py-16">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="container">
 
         <h2 className="mb-10 text-center text-3xl font-bold text-red-800 md:text-4xl">
           MAXIMUM SPEED &

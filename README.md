@@ -59,7 +59,8 @@ Biker-zone/
 │   ├── assets/
 │   │   ├── images/
 │   │   └── icons/
-│   │
+│   │   └── fonts/
+│   │ 
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── Header.jsx
@@ -69,8 +70,9 @@ Biker-zone/
 │   │   │   ├── Hero.jsx
 │   │   │   ├── About.jsx
 │   │   │   ├── Services.jsx
-│   │   │   └── Contact.jsx
-│   │   │
+│   │   │   └── Team.jsx
+│   │   │   └── Gallery.jsx
+│   │   │   └── WhyChooseUs.jsx
 │   │   └── common/
 │   │       ├── Button.jsx
 │   │       ├── Card.jsx
@@ -79,7 +81,10 @@ Biker-zone/
 │   ├── pages/
 │   │   ├── Home.jsx
 │   │   └── NotFound.jsx
-│   │
+│   │   └── Login.jsx
+│   │   └── Register.jsx
+│   │   └── ForgotPassword.jsx
+│   │ 
 │   ├── routes/
 │   │   └── AppRoutes.jsx
 │   │

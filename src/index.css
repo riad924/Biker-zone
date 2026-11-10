@@ -1,2 +1,211 @@
+
 @import "tailwindcss";
 
+/* =================================
+   1. THEME CONFIGURATION
+================================= */
+
+@theme {
+  --color-primary: #dc2626;
+  --color-secondary: #171717;
+  --color-text: #333333;
+  --color-muted: #6b7280;
+  --color-surface: #f9fafb;
+
+  --font-main: "Inter", sans-serif;
+
+  --container-width: 80rem;
+
+  --radius-card: 12px;
+}
+
+/* =================================
+   2. GLOBAL STYLES
+================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: white;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* =================================
+   3. CONTAINER
+================================= */
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: 32px;
+  }
+}
+
+/* =================================
+   4. SECTION SPACING
+================================= */
+
+.section-padding {
+  padding-block: 64px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-block: 96px;
+  }
+}
+
+/* =================================
+   5. BUTTONS
+================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #b91c1c;
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #404040;
+}
+
+/* =================================
+   6. INPUT & TEXTAREA
+================================= */
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  background-color: white;
+  color: var(--color-text);
+  transition: border-color 0.2s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* =================================
+   7. CARD
+================================= */
+
+.card {
+  padding: 24px;
+  border-radius: var(--radius-card);
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 5%);
+}
+
+/* =================================
+   8. SECTION TYPOGRAPHY
+================================= */
+
+.section-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  margin-top: 12px;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 40px;
+  }
+}
+
+/* =================================
+   9. FLEX & GRID
+================================= */
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 280px), 1fr)
+  );
+  gap: 24px;
+}
+
+/* =================================
+   10. PAGE TITLE
+================================= */
+
+.page-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+}

@@ -29,7 +29,7 @@ const Team = () => {
 
   return (
     <section id="team" className="bg-pink-200 py-16">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="container">
 
         <div className="mb-10 text-center">
           <h2 className="text-4xl font-bold md:text-5xl">
